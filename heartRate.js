@@ -8,7 +8,7 @@ class WebAnalyzer {
   async request() {
     let options = {
       "filters": [{
-
+		"namePrefix": "nrf"
       }],
       "optionalServices": [0x180D]
     };
@@ -34,14 +34,14 @@ class WebAnalyzer {
 
   async startHeartRateMeasurementNotifications(listener) {
     const service = await this.device.gatt.getPrimaryService(0x180D);
-    const characteristic = await service.getCharacteristic(0x2A37));
+    const characteristic = await service.getCharacteristic(0x2A37);
     await characteristic.startNotifications();
     characteristic.addEventListener('characteristicvaluechanged', listener);
   }
 
   async stopHeartRateMeasurementNotifications(listener) {
     const service = await this.device.gatt.getPrimaryService(0x180D);
-    const characteristic = await service.getCharacteristic(0x2A37));
+    const characteristic = await service.getCharacteristic(0x2A37);
     await characteristic.stopNotifications();
     characteristic.removeEventListener('characteristicvaluechanged', listener);
   }
@@ -57,3 +57,17 @@ class WebAnalyzer {
     console.log('Device is disconnected.');
   }
 }
+
+
+
+var webAnalyzer = new WebAnalyzer();
+
+document.getElementById('startbutton').addEventListener('click', async event => {
+  try {
+    await webAnalyzer.request();
+    await webAnalyzer.connect();
+    /* Do something with webAnalyzer... */
+  } catch(error) {
+    console.log(error);
+  }
+});
