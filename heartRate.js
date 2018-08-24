@@ -8,7 +8,7 @@ class WebAnalyzer {
   async request() {
     let options = {
       "filters": [{
-		"namePrefix": "nrf" 
+		"namePrefix": "Nordic" 
       }],
       "optionalServices": [0x180D]
     };
