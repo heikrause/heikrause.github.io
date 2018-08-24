@@ -157,11 +157,13 @@ async function connectDeviceAndCacheCharacteristics() {
   const server = await bluetoothDevice.gatt.connect();
 
   log('Getting Battery Service...');
-  const service = await server.getPrimaryService('battery_service');
+  const bat_service = await server.getPrimaryService('battery_service');
+  const hr_service = await server.getPrimaryService('heart_rate_service');
 
   log('Getting Battery Level Characteristic...');
-  batteryLevelCharacteristic = await service.getCharacteristic('battery_level');
-  heartRateMeasurementCharacteristic = await service.getCharacteristic('heart_rate_measurement');
+  batteryLevelCharacteristic = await bat_service.getCharacteristic('battery_level');
+  
+  heartRateMeasurementCharacteristic = await hr_service.getCharacteristic('heart_rate_measurement');
 
   batteryLevelCharacteristic.addEventListener('characteristicvaluechanged',
       handleBatteryLevelChanged);
