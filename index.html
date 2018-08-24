@@ -158,7 +158,7 @@ async function connectDeviceAndCacheCharacteristics() {
 
   log('Getting Battery Service...');
   const bat_service = await server.getPrimaryService('battery_service');
-  const hr_service = await server.getPrimaryService('heart_rate_service');
+  const hr_service = await server.getPrimaryService('heart_rate');
 
   log('Getting Battery Level Characteristic...');
   batteryLevelCharacteristic = await bat_service.getCharacteristic('battery_level');
