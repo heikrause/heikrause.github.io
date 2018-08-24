@@ -133,7 +133,7 @@ async function onReadBatteryLevelButtonClick() {
 
     log('Reading Battery Level...');
     await batteryLevelCharacteristic.readValue();
-	await heartRateMeasurementCharacteristic.readValue();
+	//await heartRateMeasurementCharacteristic.readValue();
   } catch(error) {
     log('Argh! ' + error);
   }
