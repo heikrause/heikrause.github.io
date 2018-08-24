@@ -3,8 +3,7 @@
 <body>
 <h1>Hello World</h1>
 <p>I'm hosted with GitHub Pages.</p>
-<button type="button" id='startbutton'>Show me the data!</button>
-<script src="heartRate.js"></script>
+
 <p id="ausgabe"></p>
 
 
@@ -123,6 +122,7 @@ optionally handle upcoming notifications as well.</p>
     
       <script>var bluetoothDevice;
 var batteryLevelCharacteristic;
+var heartRateMeasurementCharacteristic;
 
 async function onReadBatteryLevelButtonClick() {
   try {
@@ -133,6 +133,7 @@ async function onReadBatteryLevelButtonClick() {
 
     log('Reading Battery Level...');
     await batteryLevelCharacteristic.readValue();
+	await heartRateMeasurementCharacteristic.readValue();
   } catch(error) {
     log('Argh! ' + error);
   }
@@ -148,7 +149,7 @@ async function requestDevice() {
 }
 
 async function connectDeviceAndCacheCharacteristics() {
-  if (bluetoothDevice.gatt.connected && batteryLevelCharacteristic) {
+  if (bluetoothDevice.gatt.connected && batteryLevelCharacteristic &&  heartRateMeasurementCharacteristic) {
     return;
   }
 
@@ -160,9 +161,12 @@ async function connectDeviceAndCacheCharacteristics() {
 
   log('Getting Battery Level Characteristic...');
   batteryLevelCharacteristic = await service.getCharacteristic('battery_level');
+  heartRateMeasurementCharacteristic = await service.getCharacteristic('heart_rate_measurement');
 
   batteryLevelCharacteristic.addEventListener('characteristicvaluechanged',
       handleBatteryLevelChanged);
+  heartRateMeasurementCharacteristic.addEventListener('characteristicvaluechanged',
+      handleHeartRateMeasurementChanged);
   document.querySelector('#startNotifications').disabled = false;
   document.querySelector('#stopNotifications').disabled = true;
 }
@@ -174,6 +178,13 @@ function handleBatteryLevelChanged(event) {
   let batteryLevel = event.target.value.getUint8(0);
   log('> Battery Level is ' + batteryLevel + '%');
 }
+
+function handleHeartRateMeasurementChanged(event) {
+  let heartRate = event.target.value.getUint8(0);
+  log('> Heart rate is: ' + heartRate);
+}
+
+
 
 async function onStartNotificationsButtonClick() {
   try {
@@ -250,6 +261,9 @@ async function onDisconnected() {
     }
   });
 </script>
+
+
+
 
 <script>
   log = ChromeSamples.log;
