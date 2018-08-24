@@ -60,7 +60,7 @@ class WebAnalyzer {
 
 var webAnalyzer = new WebAnalyzer();
 
-document.querySelector('button').addEventListener('click', async event => {
+document.getElementById('startbutton').addEventListener('click', async event => {
   try {
     await webAnalyzer.request();
     await webAnalyzer.connect();
