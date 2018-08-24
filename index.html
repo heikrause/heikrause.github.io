@@ -192,6 +192,7 @@ async function onStartNotificationsButtonClick() {
   try {
     log('Starting Battery Level Notifications...');
     await batteryLevelCharacteristic.startNotifications();
+	await heartRateMeasurementCharacteristic.startNotifications();
 
     log('> Notifications started');
     document.querySelector('#startNotifications').disabled = true;
