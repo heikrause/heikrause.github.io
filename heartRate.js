@@ -8,9 +8,8 @@ class WebAnalyzer {
   async request() {
     let options = {
       "filters": [{
-		"namePrefix": "Nordic" 
-      }],
-      "optionalServices": [0x180D]
+		"services": [0x180D]
+      }]
     };
     this.device = await navigator.bluetooth.requestDevice(options);
     if (!this.device) {
