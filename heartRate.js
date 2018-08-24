@@ -5,6 +5,8 @@ class WebAnalyzer {
     this.onDisconnected = this.onDisconnected.bind(this);
   }
   
+  
+  
   async request() {
     let options = {
       "filters": [{
@@ -31,18 +33,29 @@ class WebAnalyzer {
     await characteristic.readValue();
   }
 
+  
+  
+  var myCharacteristic;
+  
   async startHeartRateMeasurementNotifications() {
-    const service = await this.device.gatt.getPrimaryService(0x180D);
-    const characteristic = await service.getCharacteristic(0x2A37); 
-    await characteristic.startNotifications();
-    characteristic.addEventListener('characteristicvaluechanged', handleNotifications);
+	const service = await server.getPrimaryService(0x180D);
+    myCharacteristic = await service.getCharacteristic(0x2A37);
+    await myCharacteristic.startNotifications();
+
+    log('> Notifications started');
+    myCharacteristic.addEventListener('characteristicvaluechanged',
+        handleNotifications);
+  } catch(error) {
+    log('Argh! ' + error);
+  }
   }
 
-  async stopHeartRateMeasurementNotifications() {
+  async stopHeartRateMeasurementNotifications(listener) {
+	  
     const service = await this.device.gatt.getPrimaryService(0x180D);
     const characteristic = await service.getCharacteristic(0x2A37); 
     await characteristic.stopNotifications();
-    characteristic.removeEventListener('characteristicvaluechanged', handleNotifications);
+    characteristic.removeEventListener('characteristicvaluechanged', listener);
   }
 
   disconnect() {
@@ -56,7 +69,8 @@ class WebAnalyzer {
     console.log('Device is disconnected.');
   }
   
-  function handleNotifications(event) {
+ 
+function handleNotifications(event) {
   let value = event.target.value;
   let a = [];
   // Convert raw data bytes to hex values just for the sake of showing something.
@@ -67,8 +81,8 @@ class WebAnalyzer {
   }
   log('> ' + a.join(' '));
 }
-  
-  
+ 
+
 }
 
 
@@ -78,7 +92,8 @@ document.getElementById('startbutton').addEventListener('click', async event => 
   try {
     await webAnalyzer.request();
     await webAnalyzer.connect();
-    await startHeartRateMeasurementNotifications();
+	await webAnalyzer.startHeartRateMeasurementNotifications();
+    /* Do something with webAnalyzer... */
   } catch(error) {
     console.log(error);
   }
