@@ -5,5 +5,18 @@
 <p>I'm hosted with GitHub Pages.</p>
 <button type="button" id='startbutton'>Analyze Data!</button>
 <script src="heartRate.js"></script>
+<script>
+var webAnalyzer = new WebAnalyzer();
+
+document.getElementById('startbutton').addEventListener('click', async event => {
+  try {
+    await webAnalyzer.request();
+    await webAnalyzer.connect();
+    /* Do something with webAnalyzer... */
+  } catch(error) {
+    console.log(error);
+  }
+});
+</script>
 </body>
 </html>

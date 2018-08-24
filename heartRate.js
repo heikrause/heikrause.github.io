@@ -57,15 +57,3 @@ class WebAnalyzer {
     console.log('Device is disconnected.');
   }
 }
-
-var webAnalyzer = new WebAnalyzer();
-
-document.getElementById('startbutton').addEventListener('click', async event => {
-  try {
-    await webAnalyzer.request();
-    await webAnalyzer.connect();
-    /* Do something with webAnalyzer... */
-  } catch(error) {
-    console.log(error);
-  }
-});
