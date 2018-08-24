@@ -31,18 +31,18 @@ class WebAnalyzer {
     await characteristic.readValue();
   }
 
-  async startHeartRateMeasurementNotifications(listener) {
+  async startHeartRateMeasurementNotifications() {
     const service = await this.device.gatt.getPrimaryService(0x180D);
     const characteristic = await service.getCharacteristic(0x2A37); 
     await characteristic.startNotifications();
-    characteristic.addEventListener('characteristicvaluechanged', listener);
+    characteristic.addEventListener('characteristicvaluechanged', handleNotifications);
   }
 
-  async stopHeartRateMeasurementNotifications(listener) {
+  async stopHeartRateMeasurementNotifications() {
     const service = await this.device.gatt.getPrimaryService(0x180D);
     const characteristic = await service.getCharacteristic(0x2A37); 
     await characteristic.stopNotifications();
-    characteristic.removeEventListener('characteristicvaluechanged', listener);
+    characteristic.removeEventListener('characteristicvaluechanged', handleNotifications);
   }
 
   disconnect() {
@@ -55,6 +55,20 @@ class WebAnalyzer {
   onDisconnected() {
     console.log('Device is disconnected.');
   }
+  
+  function handleNotifications(event) {
+  let value = event.target.value;
+  let a = [];
+  // Convert raw data bytes to hex values just for the sake of showing something.
+  // In the "real" world, you'd use data.getUint8, data.getUint16 or even
+  // TextDecoder to process raw data bytes.
+  for (let i = 0; i < value.byteLength; i++) {
+    a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
+  }
+  log('> ' + a.join(' '));
+}
+  
+  
 }
 
 
@@ -64,7 +78,7 @@ document.getElementById('startbutton').addEventListener('click', async event => 
   try {
     await webAnalyzer.request();
     await webAnalyzer.connect();
-    /* Do something with webAnalyzer... */
+    await startHeartRateMeasurementNotifications();
   } catch(error) {
     console.log(error);
   }
