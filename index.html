@@ -183,8 +183,8 @@ function handleBatteryLevelChanged(event) {
 }
 
 function handleHeartRateMeasurementChanged(event) {
-  let heartRate = event.target.value.getUint8(8);
-  advance(heartRate);
+  let heartRate = event.target.value;
+  //advance(heartRate);
   log('> Heart rate is: ' + heartRate);
 }
 
