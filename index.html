@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+     <head><script data-require="chart.js@2.2.1" data-semver="2.2.1" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"></script> </head>
+
+
 <body>
 <h1>Hello World</h1>
 <p>I'm hosted with GitHub Pages.</p>
@@ -282,11 +285,62 @@ async function onDisconnected() {
   }
 </script>
 
+<!--     ----------------------------------------------------------------------------------------------------     -->
 
 
 
 
 
+
+
+
+
+
+    <canvas id="myChart" width="400" height="400" onClick="chartClick();"></canvas>
+    <script>
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3]
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+    
+    var pushed = 2;
+    function chartClick(){
+      myChart.data.datasets[0].data[2]++;
+      myChart.data.labels.push('New ' + pushed);
+      myChart.data.datasets[0].data.push(pushed+=2);
+      myChart.update(1000);
+    }
+    
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--     ----------------------------------------------------------------------------------------------------     -->
 
 
 <script src="hnl.mobileConsole.js"></script>
