@@ -144,9 +144,8 @@ async function requestDevice() {
    // filters: [...] <- Prefer filters to save energy & show relevant devices.
     filters: [
     {services: ['heart_rate']},
-    {services: ['bat_service']}
-	],
-    acceptAllDevices: true});
+    {services: ['battery_service']}
+	]});
   bluetoothDevice.addEventListener('gattserverdisconnected', onDisconnected);
 }
 
