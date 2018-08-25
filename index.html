@@ -61,7 +61,9 @@
 </script>
 
 
-<p>Web Bluetooth Heart Rate:</p>
+
+
+
 
 <button id="readBatteryLevel">Read Bluetooth Device's Battery Level</button>
 <button id="startNotifications" disabled>Start Notifications</button>
@@ -95,6 +97,45 @@
     }
   };
 </script>
+
+<style>     <!-- Start Battery Part -->
+#maxProgress {
+  width: 20%;
+  background-color: #ddd;
+}
+
+#batBar {
+  width: 0%;
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 30px;
+  color: black;
+  
+}
+</style>
+<body>
+
+<h3>Battery</h3>
+
+<div id="maxProgress">
+  <div id="batBar" ></div>
+</div>
+
+<br>
+
+<script>
+
+function updateBattery(percent) {
+  var batteryBar = document.getElementById("batBar"); 
+  batteryBar.style.fontWeight = 'bold';
+  batteryBar.style.width = percent + '%'; 
+  batteryBar.innerHTML = percent + '%'; 
+  
+}
+</script>   <!-- End Battery Part -->
+
+
 
 <h3>Live Output</h3>
 <div id="output" class="output">
@@ -180,6 +221,7 @@ async function connectDeviceAndCacheCharacteristics() {
 function handleBatteryLevelChanged(event) {
   let batteryLevel = event.target.value.getUint8(0);
   log('> Battery Level is ' + batteryLevel + '%');
+  updateBattery(batteryLevel);
 }
 
 function handleHeartRateMeasurementChanged(event) {
