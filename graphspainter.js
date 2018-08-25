@@ -3,7 +3,6 @@ var speed = 500;
 var values = [];
 var labels = [];
 var charts = [];
-var value = 0;
 
 values.length = samples;
 labels.length = samples;
@@ -77,8 +76,7 @@ function initialize_graphs() {
 }
 
 
-function advance() {
-  value = Math.min(Math.max(value + (0.1 - Math.random() / 5), -1), 1);
+function advance(value) {
 
   values.push(value);
   values.shift();

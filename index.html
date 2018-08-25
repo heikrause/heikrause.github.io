@@ -14,10 +14,8 @@
 
 
 <body onload="resizeCanvas();">
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+<h1>Data visualisation</h1>
 
-<p id="ausgabe"></p>
 
 
 
@@ -70,7 +68,7 @@
 <button id="stopNotifications" disabled>Stop Notifications</button>
 <button id="reset">Reset Bluetooth Device</button>
 
-<script>
+<script> <!-- Ausgabefelder -->
   var ChromeSamples = {
     log: function() {
       var line = Array.prototype.slice.call(arguments).map(function(argument) {
@@ -106,7 +104,7 @@
 </div>
 
 
-<script>
+<script> <!-- Warning for old Chrome version -->
   if (/Chrome\/(\d+\.\d+.\d+.\d+)/.test(navigator.userAgent)){
     // Let's log a warning if the sample is not supposed to execute on this
     // version of Chrome.
@@ -184,6 +182,7 @@ function handleBatteryLevelChanged(event) {
 
 function handleHeartRateMeasurementChanged(event) {
   let heartRate = event.target.value.getUint8(0);
+  advance(heartRate);
   log('> Heart rate is: ' + heartRate);
 }
 
