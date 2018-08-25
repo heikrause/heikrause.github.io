@@ -100,10 +100,8 @@
 
 <style>     <!-- Start Battery Part -->
 #maxProgress {
-  display: inline-block;
   width: 50%;
-  background-color: #ddd;
-}
+  background-color: #ddd;}
 
 #batBar {
   width: 0%;
@@ -112,18 +110,20 @@
   text-align: center;
   line-height: 30px;
   color: black;
-  
-}
+  }
+
+#derContainer {
+display: inline-block;}
+
 </style>
 <body>
 
 <h3>Battery</h3>
-<div class='container'>
+<div class='w3-container' id="derContainer">
 <div id="maxProgress">
   <div id="batBar" ></div>
 </div>
 </div>
-.container{ display: inline-block; } 
 
 <br>
 
