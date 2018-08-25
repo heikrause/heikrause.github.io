@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
-     <head><script data-require="chart.js@2.2.1" data-semver="2.2.1" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"></script> </head>
+     <head><script data-require="chart.js@2.2.1" data-semver="2.2.1" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"></script>
+	 
+	<script src="graphspainter.js"></script>
+    <style>
+      canvas {
+        display: inline-block !important;
+      }
+    </style>
+	 
+	 </head>
 
 
 <body onload="resizeCanvas();">
@@ -281,49 +290,15 @@ async function onDisconnected() {
 <script>
 function resizeCanvas() {
     var canvs = document.getElementById("heartChart");
-    canvs.width = window.innerWidth;
-    canvs.height = window.innerHeight;
+    canvs.width = window.innerWidth * 0.5;
+    canvs.height = window.innerHeight * 0.5;
 }
 </script>
 
 
 
-
-
-    <canvas id="heartChart" onClick="chartClick();"></canvas>
-    <script>
-    var ctx = document.getElementById("heartChart");
-    var heartChart = new Chart(ctx, {
-		responsive: true,
-        type: 'line',
-        data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3]
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:false
-                    }
-                }]
-            }
-        }
-    });
-    
-    var pushed = 2;
-    function chartClick(){
-      heartChart.data.datasets[0].data[2]++;
-      heartChart.data.labels.push('New ' + pushed);
-      heartChart.data.datasets[0].data.push(pushed+=2);
-	  heartChart.data.datasets[0].shift();
-      heartChart.update(1000);
-    }
-    
-    </script>
+ <canvas id="heartChart" style="width:512px;height:320px"></canvas>
+ <canvas id="batteryChart" style="width:512px;height:320px"></canvas>
 
 
 
