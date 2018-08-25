@@ -142,8 +142,11 @@ async function requestDevice() {
   log('Requesting any Bluetooth Device...');
   bluetoothDevice = await navigator.bluetooth.requestDevice({
    // filters: [...] <- Prefer filters to save energy & show relevant devices.
-      acceptAllDevices: true,
-      optionalServices: ['battery_service'],['heart_rate']});
+    filters: [
+    {services: ['heart_rate']},
+    {services: ['bat_service']}
+	],
+    acceptAllDevices: true});
   bluetoothDevice.addEventListener('gattserverdisconnected', onDisconnected);
 }
 
