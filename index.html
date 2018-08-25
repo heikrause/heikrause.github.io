@@ -294,6 +294,7 @@ function resizeCanvas() {
     <script>
     var ctx = document.getElementById("heartChart");
     var heartChart = new Chart(ctx, {
+		responsive: true,
         type: 'line',
         data: {
             labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -315,10 +316,10 @@ function resizeCanvas() {
     
     var pushed = 2;
     function chartClick(){
-	  heartChart.removeData();
       heartChart.data.datasets[0].data[2]++;
       heartChart.data.labels.push('New ' + pushed);
       heartChart.data.datasets[0].data.push(pushed+=2);
+	  heartChart.data.datasets[0].shift();
       heartChart.update(1000);
     }
     
