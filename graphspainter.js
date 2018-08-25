@@ -10,7 +10,7 @@ labels.length = samples;
 values.fill(0);
 labels.fill(0);
 
-function initialize() {
+function initialize_graphs() {
   charts.push(new Chart(document.getElementById("heartChart"), {
     type: 'line',
     data: {
@@ -19,8 +19,8 @@ function initialize() {
         data: values,
         backgroundColor: 'rgba(255, 99, 132, 0.1)',
         borderColor: 'rgb(255, 99, 132)',
-        borderWidth: 2,
-        lineTension: 0.25,
+        borderWidth: 3,
+        lineTension: 0.75,
         pointRadius: 0 
       }]
     },
@@ -84,12 +84,9 @@ function advance() {
   values.shift();
   charts.forEach(function(chart) { chart.update(); });
 
-  setTimeout(function() {
-    requestAnimationFrame(advance);
-  }, speed);
+  //setTimeout(function() {
+  //  requestAnimationFrame(advance);
+  //}, speed);
 }
 
-window.onload = function() {
-  initialize();
-  advance();
-};
+
