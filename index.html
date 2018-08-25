@@ -183,7 +183,7 @@ function handleBatteryLevelChanged(event) {
 }
 
 function handleHeartRateMeasurementChanged(event) {
-  let heartRate = event.target.value.getUint8(0);
+  let heartRate = event.target.value.getUint8(8);
   advance(heartRate);
   log('> Heart rate is: ' + heartRate);
 }
@@ -291,9 +291,9 @@ async function onDisconnected() {
 
 <script>
 function resizeCanvas() {
-    var canvs = document.getElementById("heartChart");
-    canvs.width = window.innerWidth * 0.5;
-    canvs.height = window.innerHeight * 0.5;
+    //var canvs = document.getElementById("heartChart");
+    //canvs.width = window.innerWidth * 0.5;
+    //canvs.height = window.innerHeight * 0.5;
 	initialize_graphs();
 }
 </script>
