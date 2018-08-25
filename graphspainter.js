@@ -20,7 +20,7 @@ function initialize_graphs() {
         borderColor: 'rgb(255, 99, 132)',
         borderWidth: 3,
         lineTension: 0.75,
-        pointRadius: 0 
+        pointRadius: 1 
       }]
     },
     options: {
@@ -36,8 +36,8 @@ function initialize_graphs() {
         }],
         yAxes: [{
           ticks: {
-            max: 1,
-            min: -1
+            max: 200,
+            min: 40
           }
         }]
       }
@@ -66,8 +66,8 @@ function initialize_graphs() {
         }],
         yAxes: [{
           ticks: {
-            max: 1,
-            min: -1
+            max: 200,
+            min: 40
           }
         }]
       }
