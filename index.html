@@ -138,12 +138,7 @@ function updateBattery(percent) {
 
 
 
-<h3>Live Output</h3>
-<div id="output" class="output">
-  <div id="content"></div>
-  <div id="status"></div>
-  <pre id="log"></pre>
-</div>
+
 
 
 <script> <!-- Warning for old Chrome version -->
@@ -175,6 +170,7 @@ async function onReadBatteryLevelButtonClick() {
     log('Reading Battery Level...');
     await batteryLevelCharacteristic.readValue();
 	//await heartRateMeasurementCharacteristic.readValue();
+	onStartNotificationsButtonClick();
   } catch(error) {
     log('Argh! ' + error);
   }
@@ -347,7 +343,12 @@ function resizeCanvas() {
  <canvas id="batteryChart" style="width:512px;height:320px"></canvas>
 
 
-
+<h3>Live Output</h3>
+<div id="output" class="output">
+  <div id="content"></div>
+  <div id="status"></div>
+  <pre id="log"></pre>
+</div>
 
 
 
