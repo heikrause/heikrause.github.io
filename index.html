@@ -160,6 +160,7 @@ function updateBattery(percent) {
       <script>var bluetoothDevice;
 var batteryLevelCharacteristic;
 var heartRateMeasurementCharacteristic;
+var deviceNameCharacteristic;
 
 async function onReadBatteryLevelButtonClick() {
   try {
@@ -169,8 +170,9 @@ async function onReadBatteryLevelButtonClick() {
     await connectDeviceAndCacheCharacteristics();
 
     log('Reading Battery Level...');
-    await batteryLevelCharacteristic.readValue();
+    //await batteryLevelCharacteristic.readValue();
 	//await heartRateMeasurementCharacteristic.readValue();
+	await deviceNameCharacteristic.readValue();
 	onStartNotificationsButtonClick();
   } catch(error) {
     log('Argh! ' + error);
@@ -189,7 +191,7 @@ async function requestDevice() {
 }
 
 async function connectDeviceAndCacheCharacteristics() {
-  if (bluetoothDevice.gatt.connected && batteryLevelCharacteristic &&  heartRateMeasurementCharacteristic) {
+  if (bluetoothDevice.gatt.connected && batteryLevelCharacteristic &&  heartRateMeasurementCharacteristic && deviceNameCharacteristic) {
     return;
   }
 
@@ -199,16 +201,17 @@ async function connectDeviceAndCacheCharacteristics() {
   log('Getting Battery Service...');
   const bat_service = await server.getPrimaryService('battery_service');
   const hr_service = await server.getPrimaryService('heart_rate');
+  const gac_service = await server.getPrimaryService('generic_access');
 
   log('Getting Battery Level Characteristic...');
   batteryLevelCharacteristic = await bat_service.getCharacteristic('battery_level');
-  
   heartRateMeasurementCharacteristic = await hr_service.getCharacteristic('heart_rate_measurement');
-
-  batteryLevelCharacteristic.addEventListener('characteristicvaluechanged',
-      handleBatteryLevelChanged);
-  heartRateMeasurementCharacteristic.addEventListener('characteristicvaluechanged',
-      handleHeartRateMeasurementChanged);
+  deviceNameCharacteristic = await gac_service.getCharacteristic('device_name')
+  
+  
+  batteryLevelCharacteristic.addEventListener('characteristicvaluechanged', handleBatteryLevelChanged);
+  heartRateMeasurementCharacteristic.addEventListener('characteristicvaluechanged', handleHeartRateMeasurementChanged);
+  deviceNameCharacteristic.addEventListener('characteristicvaluechanged', handleDeviceNameChanged);
   document.querySelector('#startNotifications').disabled = false;
   document.querySelector('#stopNotifications').disabled = true;
 }
@@ -227,6 +230,10 @@ function handleHeartRateMeasurementChanged(event) {
   advance(heartRate);
   log('> Heart rate is: ' + heartRate);
 }
+
+function handleDeviceNameChanged(event) {
+  let deviceName = event.target.value.getUint8(0);
+  log('> The name of the device is ' + deviceName);
 
 
 
