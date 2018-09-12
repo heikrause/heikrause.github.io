@@ -233,8 +233,8 @@ function handleHeartRateMeasurementChanged(event) {
 }
 
 function handleDeviceNameChanged(event) {
-  let deviceNameUint = event.target.value.prototype.buffer;
-  let len = event.target.value.prototype.length;
+  let deviceNameUint = event.target.value.buffer;
+  let len = event.target.value.length;
   var binaryString = '';
   log('> blaaa' + len);
   for (var i = 0; i < len; i++) {
