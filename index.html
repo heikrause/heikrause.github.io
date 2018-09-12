@@ -208,7 +208,7 @@ async function connectDeviceAndCacheCharacteristics() {
   batteryLevelCharacteristic = await bat_service.getCharacteristic('battery_level');
   heartRateMeasurementCharacteristic = await hr_service.getCharacteristic('heart_rate_measurement');
   deviceNameCharacteristic = await gac_service.getCharacteristic('gap.device_name')
-  readDeviceNameValue(deviceNameCharacteristic);
+  await readDeviceNameValue(deviceNameCharacteristic);
   
   batteryLevelCharacteristic.addEventListener('characteristicvaluechanged', handleBatteryLevelChanged);
   heartRateMeasurementCharacteristic.addEventListener('characteristicvaluechanged', handleHeartRateMeasurementChanged);
