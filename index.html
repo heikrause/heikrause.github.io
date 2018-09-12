@@ -232,17 +232,7 @@ function handleHeartRateMeasurementChanged(event) {
   log('> Heart rate is: ' + heartRate);
 }
 
-/* function handleDeviceNameChanged(event) {
-  let deviceNameUint = event.target.value;
-  let len = event.target.value.length;
-  var binaryString = '';
-  log('> blaaa ' + event.target.value);
-  for (var i = 0; i < len; i++) {
-	binaryString += String.fromCharCode(deviceNameUint[i]);
-	log('> The name:  ' + deviceNameUint[i] + ' oder ' + binaryString);
-}
-  log('> The name of the device is ' + binaryString);
-}*/
+
 
 async function readDeviceNameValue(characteristic) {
   const value = await characteristic.readValue();
