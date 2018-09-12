@@ -208,11 +208,11 @@ async function connectDeviceAndCacheCharacteristics() {
   batteryLevelCharacteristic = await bat_service.getCharacteristic('battery_level');
   heartRateMeasurementCharacteristic = await hr_service.getCharacteristic('heart_rate_measurement');
   deviceNameCharacteristic = await gac_service.getCharacteristic('gap.device_name')
-  
+  readDeviceNameValue(deviceNameCharacteristic);
   
   batteryLevelCharacteristic.addEventListener('characteristicvaluechanged', handleBatteryLevelChanged);
   heartRateMeasurementCharacteristic.addEventListener('characteristicvaluechanged', handleHeartRateMeasurementChanged);
-  deviceNameCharacteristic.addEventListener('characteristicvaluechanged', handleDeviceNameChanged);
+  //deviceNameCharacteristic.addEventListener('characteristicvaluechanged', handleDeviceNameChanged);
   document.querySelector('#startNotifications').disabled = false;
   document.querySelector('#stopNotifications').disabled = true;
 }
@@ -232,7 +232,7 @@ function handleHeartRateMeasurementChanged(event) {
   log('> Heart rate is: ' + heartRate);
 }
 
-function handleDeviceNameChanged(event) {
+/* function handleDeviceNameChanged(event) {
   let deviceNameUint = event.target.value;
   let len = event.target.value.length;
   var binaryString = '';
@@ -242,8 +242,12 @@ function handleDeviceNameChanged(event) {
 	log('> The name:  ' + deviceNameUint[i] + ' oder ' + binaryString);
 }
   log('> The name of the device is ' + binaryString);
-}
+}*/
 
+async function readDeviceNameValue(characteristic) {
+  const value = await characteristic.readValue();
+  log('> Device Name: ' + new TextDecoder().decode(value));
+}
 
 async function onStartNotificationsButtonClick() {
   try {
