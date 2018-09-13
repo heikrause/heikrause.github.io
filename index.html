@@ -229,9 +229,9 @@ function handleBatteryLevelChanged(event) {
 function handleHeartRateMeasurementChanged(event) {
 
 	log('> 0 ' + event.target.value.getUint8(0).toString(2));
-	log('> 1 ' + event.target.value.getUint8(0).toString(2));
-    log('> 2 ' + event.target.value.getUint8(0).toString(2));
-	log('> 3 ' + event.target.value.getUint8(0).toString(2));
+	log('> 1 ' + event.target.value.getUint8(1).toString(2));
+    log('> 2 ' + event.target.value.getUint8(2).toString(2));
+	log('> 3 ' + event.target.value.getUint8(3).toString(2));
 	log('> 16:0 ' + event.target.value.getUint16(0).toString(2));
     log('> 16:1 ' + event.target.value.getUint16(1).toString(2));
   
