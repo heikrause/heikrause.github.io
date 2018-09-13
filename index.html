@@ -227,20 +227,21 @@ function handleBatteryLevelChanged(event) {
 }
 
 function handleHeartRateMeasurementChanged(event) {
-
+	/*
 	log('> 0 ' + event.target.value.getUint8(0).toString(2));
 	log('> 1 ' + event.target.value.getUint8(1).toString(2));
     log('> 2 ' + event.target.value.getUint8(2).toString(2));
 	log('> 3 ' + event.target.value.getUint8(3).toString(2));
 	log('> 16:0 ' + event.target.value.getUint16(0).toString(2));
     log('> 16:1 ' + event.target.value.getUint16(1).toString(2));
+     */
   
-  let heartRate = event.target.value.getUint16(1);
-  advance(heartRate);
+  let heartRate = event.target.value.getUint8(1);
+  if (event.target.value.getUint8(2)==1){ //falls buffer overflow
+  heartRate += 256;
+  }
+  advance(heartRate); //auf graph malen
   log('> Heart Rate is: ' + heartRate);
-
-  let heartRate2 = event.target.value.getUint8(1);
-  log('> Heart Rate is 2: ' + heartRate2);
   
   
   }
