@@ -227,9 +227,11 @@ function handleBatteryLevelChanged(event) {
 }
 
 function handleHeartRateMeasurementChanged(event) {
+  log('> Heart Rate decoded 1 : ' + new TextDecoder().decode(event.target.value.getUint8(8)));
+  log('> Heart Rate decoded 2 : ' + new TextDecoder().decode(event.target.value));
   let heartRate = event.target.value.getUint8(8);
   advance(heartRate);
-  log('> Heart rate is: ' + heartRate);
+  log('> Heart Rate is: ' + heartRate);
 }
 
 
