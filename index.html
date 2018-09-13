@@ -232,7 +232,7 @@ function handleHeartRateMeasurementChanged(event) {
   let heartRate2 = event.target.value.getUint8(1);
   log('> Heart Rate is 2: ' + heartRate2);
   
-  let heartRate = event.target.value.getUint16(1);
+  let heartRate = event.target.value.getUint16(2);
   advance(heartRate);
   log('> Heart Rate is: ' + heartRate);
 }
