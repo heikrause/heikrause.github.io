@@ -1,9 +1,9 @@
-var scene = new THREE.Scene();
-			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+			var container = document.getElementById('threedcontainer');
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 75, container.clientWidth/container.clientHeight, 0.1, 1000 );
 
 			var renderer = new THREE.WebGLRenderer();
-			container = document.getElementById('threedcontainer');
-			renderer.setSize(container.width(), container.height());//
+			renderer.setSize(container.clientWidth, container.clientHeight);//
 			container.appendChild(renderer.container);
 			
 		
