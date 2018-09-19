@@ -3,7 +3,7 @@ var scene = new THREE.Scene();
 
 			var renderer = new THREE.WebGLRenderer();
 			container = document.getElementById('threedcontainer');
-			renderer.setSize($(container).width(), $(container).height());
+			renderer.setSize(container.width(), container.height());
 			container.appendChild(renderer.domElement);
 			
 			//renderer.setSize( window.innerWidth, window.innerHeight );
