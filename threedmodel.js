@@ -24,7 +24,7 @@
 				cube.rotation.y = ry;
 				cube.rotation.z = rz;
 				
-				//renderer.render( scene, camera );
+				renderer.render( scene, camera );
 				
 			}
 			
