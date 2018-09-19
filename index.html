@@ -10,7 +10,7 @@
       }
 	  
 	div.threedcontainer {
-    height: 100px;
+    height: 500px;
     width: 500px;
 	}
 	  
@@ -21,7 +21,6 @@
 
 <body onload="resizeCanvas();">
 <div id="connection_name">No device connected</div>
-<h1>Data visualisation</h1>
 
 
 
@@ -139,6 +138,7 @@ function updateBattery(percent) {
   batteryBar.style.fontWeight = 'bold';
   batteryBar.style.width = percent + '%'; 
   batteryBar.innerHTML = percent + '%'; 
+  updateRotation(percent, 0 , 0);
   
 }
 </script>   <!-- End Battery Part -->

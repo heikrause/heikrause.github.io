@@ -10,7 +10,7 @@
 			
 		
 
-			var geometry = new THREE.BoxGeometry( 2, 1, 1 );
+			var geometry = new THREE.BoxGeometry( 3, 2, 1 );
 			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 			var cube = new THREE.Mesh( geometry, material );
 			scene.add( cube );
@@ -19,8 +19,18 @@
 
 			
 	
+			function updateRotation(rx,ry,rz){
+				cube.rotation.x = rx;
+				cube.rotation.y = ry;
+				cube.rotation.z = rz;
+				
+				renderer.render( scene, camera );
+				
+			}
 			
 			
+			
+			/**
 			var animate = function () {
 				requestAnimationFrame( animate );
 
@@ -31,3 +41,4 @@
 			};
 
 			animate();
+			**/
