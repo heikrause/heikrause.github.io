@@ -237,7 +237,8 @@ function handleHeartRateMeasurementChanged(event) {
      
   
   let heartRate = event.target.value.getUint8(1);
-  if (event.target.value.getUint8(2)==1){ //falls buffer overflow
+  //if (event.target.value.getUint8(2)==1){ //falls buffer overflow
+  if(event.target.value.getUint8(0) & 1){
   heartRate += 256;
   }
   advance(heartRate); //auf graph malen
