@@ -12,7 +12,6 @@
 	div.threedcontainer {
     height: 500px;
     width: 500px;
-	float: left;
 	}
 	  
     </style>
@@ -371,13 +370,15 @@ function resizeCanvas() {
     //canvs.width = window.innerWidth * 0.5;
     //canvs.height = window.innerHeight * 0.5;
 	initialize_graphs();
+	
 }
 </script>
 
 
- <div id="wrapper">
- <canvas id="heartChart" style="width:512px;height:320px"></canvas>
  <canvas id="barChart" style="width:0px;height:0px"></canvas><!-- //barChart turned invisible atm -->
+
+ <div id="wrapper">
+ <canvas id="heartChart" style="width:512px;height:320px;float:left;"></canvas>
  <div id="threedcontainer" class="threedcontainer"></div>
  </div>
  
