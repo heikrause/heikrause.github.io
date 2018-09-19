@@ -20,9 +20,9 @@
 			
 	
 			function updateRotation(rx,ry,rz){
-				cube.rotation.x = rx;
-				cube.rotation.y = ry;
-				cube.rotation.z = rz;
+				cube.rotation.x = rx * Math.PI / 180; //degree to radians
+				cube.rotation.y = ry * Math.PI / 180;
+				cube.rotation.z = rz * Math.PI / 180;
 				
 				renderer.render( scene, camera );
 				
