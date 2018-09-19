@@ -12,6 +12,7 @@
 	div.threedcontainer {
     height: 500px;
     width: 500px;
+	float: left;
 	}
 	  
     </style>
@@ -374,11 +375,12 @@ function resizeCanvas() {
 </script>
 
 
-<div class="wrapper" style="margin: 0 auto; width: 800px; position: relative;">
-	<div id="threedcontainer" style="position: absolute; top:0; left:0; class="threedcontainer"></div>
-	<canvas id="heartChart" align="center" style="width:512px;height:320px"></canvas>
-	<canvas id="barChart" style="width:0px;height:0px"></canvas><!-- //barChart turned invisible atm -->
-</div>
+ <div id="wrapper">
+ <canvas id="heartChart" style="width:512px;height:320px"></canvas>
+ <canvas id="barChart" style="width:0px;height:0px"></canvas><!-- //barChart turned invisible atm -->
+ <div id="threedcontainer" class="threedcontainer"></div>
+ </div>
+ 
  
  
  
