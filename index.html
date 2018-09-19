@@ -14,8 +14,8 @@
 
 
 <body onload="resizeCanvas();">
+<div id="connection_name">No device connected</div>
 <h1>Data visualisation</h1>
-
 
 
 
@@ -247,11 +247,15 @@ function handleHeartRateMeasurementChanged(event) {
   }
 
 
-
+//Name der Connection lesen
 async function readDeviceNameValue(characteristic) {
   const value = await characteristic.readValue();
-  log('> Device Name: ' + new TextDecoder().decode(value));
+  let connectionName = new TextDecoder().decode(value);
+  log('> Device Name: ' + connectionName);
+  var fieldNameElement = document.getElementById('connection_name');
+  fieldNameElement.innerHTML = connectionName;
 }
+
 
 async function onStartNotificationsButtonClick() {
   try {
