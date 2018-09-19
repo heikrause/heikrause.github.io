@@ -6,7 +6,7 @@
 
 			var renderer = new THREE.WebGLRenderer();
 			renderer.setSize(container.clientWidth, container.clientHeight);
-			container.appendChild(renderer.container);
+			container.appendChild(renderer.domElement);
 			
 		
 
