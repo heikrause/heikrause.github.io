@@ -4,12 +4,12 @@ var scene = new THREE.Scene();
 			var renderer = new THREE.WebGLRenderer();
 			container = document.getElementById('threedcontainer');
 			renderer.setSize(container.width(), container.height());
-			container.appendChild(renderer.domElement);
+			container.appendChild(renderer.container);
 			
 			//renderer.setSize( window.innerWidth, window.innerHeight );
 			//document.body.appendChild( renderer.domElement );
 
-			var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+			var geometry = new THREE.BoxGeometry( 2, 1, 1 );
 			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 			var cube = new THREE.Mesh( geometry, material );
 			scene.add( cube );
@@ -17,9 +17,7 @@ var scene = new THREE.Scene();
 			camera.position.z = 5;
 
 			
-			container = document.getElementById('container');
-			renderer.setSize($(container).width(), $(container).height());
-			container.appendChild(renderer.domElement);
+	
 			
 			
 			var animate = function () {
