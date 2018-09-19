@@ -3,11 +3,10 @@ var scene = new THREE.Scene();
 
 			var renderer = new THREE.WebGLRenderer();
 			container = document.getElementById('threedcontainer');
-			renderer.setSize(container.width(), container.height());
+			renderer.setSize(container.width(), container.height());//
 			container.appendChild(renderer.container);
 			
-			//renderer.setSize( window.innerWidth, window.innerHeight );
-			//document.body.appendChild( renderer.domElement );
+		
 
 			var geometry = new THREE.BoxGeometry( 2, 1, 1 );
 			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
