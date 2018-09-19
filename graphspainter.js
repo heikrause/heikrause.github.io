@@ -42,7 +42,7 @@ function initialize_graphs() {
         }]
       }
     }
-  }), new Chart(document.getElementById("batteryChart"), {
+  }), new Chart(document.getElementById("barChart"), {
     type: 'bar',
     data: {
       labels: labels,
