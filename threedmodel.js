@@ -26,7 +26,7 @@
 				cube.rotation.x = rx * 0.01745329251; //degree to radians (pi/180)
 				cube.rotation.y = ry * 0.01745329251;
 				cube.rotation.z = rz * 0.01745329251;
-				//renderer.render( scene, camera );
+				renderer.render( scene, camera );
 				
 			}
 			
