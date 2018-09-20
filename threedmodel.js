@@ -23,9 +23,9 @@
 			renderer.render( scene, camera );
 	
 			function updateRotation(rx,ry,rz){
-				geometry.rotation.x = rx * 0.01745329251; //degree to radians (pi/180)
-				geometry.rotation.y = ry * 0.01745329251;
-				geometry.rotation.z = rz * 0.01745329251;
+				cube.rotation.x = rx * 0.01745329251; //degree to radians (pi/180)
+				cube.rotation.y = ry * 0.01745329251;
+				cube.rotation.z = rz * 0.01745329251;
 				//renderer.render( scene, camera );
 				
 			}
