@@ -139,7 +139,6 @@ function updateBattery(percent) {
   batteryBar.style.fontWeight = 'bold';
   batteryBar.style.width = percent + '%'; 
   batteryBar.innerHTML = percent + '%'; 
-  updateRotation(90, 0 , 0);//TODO
   
 }
 </script>   <!-- End Battery Part -->
@@ -219,7 +218,7 @@ async function connectDeviceAndCacheCharacteristics() {
   heartRateMeasurementCharacteristic = await hr_service.getCharacteristic('heart_rate_measurement');
   deviceNameCharacteristic = await gac_service.getCharacteristic('gap.device_name');
   rotationCharacteristic = await rot_service.getCharacteristic(0x2b41);
-  //await readDeviceNameValue(deviceNameCharacteristic);
+  await readDeviceNameValue(deviceNameCharacteristic); //nur einmal anfangs auslesen
   
   batteryLevelCharacteristic.addEventListener('characteristicvaluechanged', handleBatteryLevelChanged);
   heartRateMeasurementCharacteristic.addEventListener('characteristicvaluechanged', handleHeartRateMeasurementChanged);
