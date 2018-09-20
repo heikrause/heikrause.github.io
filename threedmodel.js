@@ -13,6 +13,9 @@
 			var geometry = new THREE.BoxGeometry( 3, 2, 1 );
 			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 			var cube = new THREE.Mesh( geometry, material );
+			var edges = new THREE.EdgesGeometry( geometry );
+			var line = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0xffffff } ) );
+			scene.add( line );
 			scene.add( cube );
 
 			camera.position.z = 5;
