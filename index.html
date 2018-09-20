@@ -244,16 +244,16 @@ function handleRotationChanged(event) {
 
 function handleHeartRateMeasurementChanged(event) {
 	
-	log('> 0 ' + event.target.value.getUint8(0).toString(2) +' als Int: ' + event.target.value.getUint8(0));
+	/*log('> 0 ' + event.target.value.getUint8(0).toString(2) +' als Int: ' + event.target.value.getUint8(0));
 	log('> 1 ' + event.target.value.getUint8(1).toString(2) +' als Int: ' + event.target.value.getUint8(1));
     log('> 2 ' + event.target.value.getUint8(2).toString(2) +' als Int: ' + event.target.value.getUint8(2));
 	log('> 3 ' + event.target.value.getUint8(3).toString(2) +' als Int: ' + event.target.value.getUint8(3));
 	log('> 16:0 ' + event.target.value.getUint16(0).toString(2) +' als Int: ' + event.target.value.getUint16(0));
-    log('> 16:1 ' + event.target.value.getUint16(1).toString(2) +' als Int: ' + event.target.value.getUint16(1));
+    log('> 16:1 ' + event.target.value.getUint16(1).toString(2) +' als Int: ' + event.target.value.getUint16(1));*/
     
   let isfirstflagset = event.target.value.getUint8(0) & 1;
   let heartRate = event.target.value.getUint8(1);
-  let heartRate2 = event.target.value.getUint8(2);
+  //let heartRate2 = event.target.value.getUint8(2);
 
   if(isfirstflagset){//falls erstes Flag-Bit gesetzt
   log('> Erstes Flag-Bit gesetzt');
