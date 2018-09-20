@@ -20,14 +20,14 @@
 
 			camera.position.z = 5;
 
-			
+			renderer.render( scene, camera );
 	
 			function updateRotation(rx,ry,rz){
 				cube.rotation.x = rx * Math.PI / 180; //degree to radians
 				cube.rotation.y = ry * Math.PI / 180;
 				cube.rotation.z = rz * Math.PI / 180;
 				
-				renderer.render( scene, camera );
+				//renderer.render( scene, camera );
 				
 			}
 			
