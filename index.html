@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html>
      <head><script src="https://playground.abysscorp.org/chartjs/livecharts/dist/Chart.min.js"></script>
-
-	 
 	<script src="graphspainter.js"></script>
-    <style>
-      canvas {
+    
+	
+	
+	<style>
+     canvas {
         display: inline-block !important;
-      }
+     }
 	  
 	div.threedcontainer {
     height: 500px;
     width: 500px;
 	float: right;
 	}
-	  
+	
+	
+	
+	.notification-bottom {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+	}
     </style>
 	 
 	 </head>
@@ -24,8 +33,16 @@
 <div id="connection_name">No device connected</div>
 
 
+<button id="readBatteryLevel">Connect</button>
+<button id="startNotifications" style="visibility:hidden;" disabled>Start Notifications</button> 
+<button id="stopNotifications" style="visibility:hidden;" disabled>Stop Notifications</button>
+<button id="reset" style="visibility:hidden;">Reset Bluetooth Device</button>
 
-<script>
+
+
+
+
+<script> //Bluetooth 
  window.addEventListener('DOMContentLoaded', function() {
     const searchParams = new URL(location).searchParams;
     const inputs = Array.from(document.querySelectorAll('input[id]'));
@@ -70,11 +87,6 @@
 
 
 
-
-<button id="readBatteryLevel">Connect</button>
-<button id="startNotifications" style="visibility:hidden;" disabled>Start Notifications</button> 
-<button id="stopNotifications" style="visibility:hidden;" disabled>Stop Notifications</button>
-<button id="reset" style="visibility:hidden;">Reset Bluetooth Device</button>
 
 
 <script> <!-- Ausgabefelder -->
@@ -139,7 +151,6 @@ function updateBattery(percent) {
   batteryBar.style.fontWeight = 'bold';
   batteryBar.style.width = percent + '%'; 
   batteryBar.innerHTML = percent + '%'; 
-  
 }
 </script>   <!-- End Battery Part -->
 
@@ -409,7 +420,9 @@ function resizeCanvas() {
 
 
 
-
+<div class="notification-bottom">
+  <p>Your Message goes <a>here</a></p>
+</div>
 
 
 
