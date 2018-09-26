@@ -4,7 +4,7 @@
 	<script src="graphspainter.js"></script>
     
 	
-	
+	<div id="snackbar">Some text some message..</div>
 	<style>
      canvas {
         display: inline-block !important;
@@ -16,7 +16,20 @@
 	float: right;
 	}
 	
-	
+	#snackbar {
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
 	
 	.notification-bottom {
   position: fixed;
@@ -164,8 +177,8 @@ function updateBattery(percent) {
   batteryBar.style.width = percent + '%'; 
   batteryBar.innerHTML = percent + '%';
   
-  var bottombar = document.getElementById("bottombar");
-  bottombar.innerHTML = percent + '%';
+  //var bottombar = document.getElementById("bottombar");
+  //bottombar.innerHTML = percent + '%';
   
 }
 </script>   <!-- End Battery Part -->
@@ -434,14 +447,14 @@ function resizeCanvas() {
   <pre id="log"></pre>
 </div>
  
-
+<!--
 <div id="botcolor">
     <p> </p>
 <div id="bottombar" class="notification-bottom">
   <p>Your Message goes <a>here</a></p>
 </div>
 </div>
-
+-->
 
 
 
