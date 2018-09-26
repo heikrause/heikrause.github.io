@@ -150,7 +150,11 @@ function updateBattery(percent) {
   var batteryBar = document.getElementById("batBar"); 
   batteryBar.style.fontWeight = 'bold';
   batteryBar.style.width = percent + '%'; 
-  batteryBar.innerHTML = percent + '%'; 
+  batteryBar.innerHTML = percent + '%';
+  
+  var bottombar = document.getElementById("bottombar");
+  bottombar.innerHTML = percent + '%';
+  
 }
 </script>   <!-- End Battery Part -->
 
@@ -417,10 +421,10 @@ function resizeCanvas() {
   <div id="status"></div>
   <pre id="log"></pre>
 </div>
+ 
 
 
-
-<div class="notification-bottom">
+<div id="bottombar" class="notification-bottom">
   <p>Your Message goes <a>here</a></p>
 </div>
 
