@@ -1,14 +1,38 @@
-			
-			
+
+
+					
 			var container = document.getElementById('threedcontainer');//
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 75, container.clientWidth/container.clientHeight, 0.1, 1000 );
 
+			
+			
+			// Instantiate a loader
+			var loader = new THREE.GLTFLoader();
+			loader.load('BiVital.glb',function ( gltf ) {
+					scene.add( gltf.scene );
+					gltf.animations; // Array<THREE.AnimationClip>
+					gltf.scene; // THREE.Scene
+					gltf.scenes; // Array<THREE.Scene>
+					gltf.cameras; // Array<THREE.Camera>
+					gltf.asset; // Object
+
+				},function ( xhr ) {
+					console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+					},
+				function ( error ) {
+					console.log( 'An error happened' );
+				}
+			);
+			//loading finished
+			
+			
+			
 			var renderer = new THREE.WebGLRenderer();
 			renderer.setSize(container.clientWidth, container.clientHeight);
 			container.appendChild(renderer.domElement);
 			
-		
+			
 
 			var geometry = new THREE.BoxGeometry( 3, 2, 1 );
 			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
