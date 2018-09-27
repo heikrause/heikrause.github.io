@@ -1,4 +1,4 @@
-			src="graphspainter.js"
+			src="GLTFLoader.js"
 
 					
 			var container = document.getElementById('threedcontainer');//
