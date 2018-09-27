@@ -1,4 +1,3 @@
-			src="GLTFLoader.js"
 
 					
 			var container = document.getElementById('threedcontainer');//
