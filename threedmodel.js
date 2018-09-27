@@ -2,6 +2,7 @@
 					
 			var container = document.getElementById('threedcontainer');//
 			var scene = new THREE.Scene();
+			scene.background = new THREE.Color( 0xff0000 );
 			var camera = new THREE.PerspectiveCamera( 75, container.clientWidth/container.clientHeight, 0.1, 1000 );
 
 			
@@ -28,7 +29,7 @@
 			
 			
 			
-			var renderer = new THREE.WebGLRenderer();
+			var renderer = new THREE.WebGLRenderer({ alpha: true });
 			renderer.setSize(container.clientWidth, container.clientHeight);
 			container.appendChild(renderer.domElement);
 			
