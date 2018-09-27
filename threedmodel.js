@@ -1,4 +1,4 @@
-
+			src="graphspainter.js"
 
 					
 			var container = document.getElementById('threedcontainer');//
@@ -9,6 +9,7 @@
 			
 			// Instantiate a loader
 			var loader = new THREE.GLTFLoader();
+
 			loader.load('BiVital.glb',function ( gltf ) {
 					scene.add( gltf.scene );
 					gltf.animations; // Array<THREE.AnimationClip>
