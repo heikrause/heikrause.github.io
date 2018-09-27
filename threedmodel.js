@@ -4,7 +4,6 @@
 			var scene = new THREE.Scene();
 			scene.background = new THREE.Color( 0xffffff );
 			var camera = new THREE.PerspectiveCamera( 75, container.clientWidth/container.clientHeight, 0.1, 1000 );
-			var sender3D;
 
 			
 			
@@ -19,7 +18,7 @@
 					gltf.scene; // THREE.Scene
 					gltf.scenes; // Array<THREE.Scene>
 					gltf.cameras; // Array<THREE.Camera>
-					sender3D = gltf.asset; // Object
+					gltf.asset; // Object
 
 				},function ( xhr ) {
 					console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
@@ -33,7 +32,7 @@
 			
 			
 			var renderer = new THREE.WebGLRenderer({ alpha: true });
-			renderer.setClearColor( 0xffffff );
+			//renderer.setClearColor( 0xffffff );
 			renderer.setSize(container.clientWidth, container.clientHeight);
 			container.appendChild(renderer.domElement);
 			
@@ -55,7 +54,6 @@
 				cube.rotation.x = rx * 0.01745329251; //degree to radians (pi/180)
 				cube.rotation.y = ry * 0.01745329251;
 				cube.rotation.z = rz * 0.01745329251;
-				sender3D.rotation.z = rz * 0.01745329251;
 				renderer.render( scene, camera );
 				
 			}
