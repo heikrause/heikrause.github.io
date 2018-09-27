@@ -6,7 +6,6 @@
 	<script src="graphspainter.js"></script>
 	<script src="three.js"></script>
 	<script src="GLTFLoader.js"></script>
-	<script src="threedmodel.js"></script>
 	
 	<div id="snackbar">Some text some message..</div>
 	<style>
@@ -86,6 +85,14 @@
 
 
 <body onload="resizeCanvas();">
+
+ <div id="wrapper">
+ <canvas id="heartChart" style="width:512px;height:320px"></canvas>
+ <canvas id="barChart" style="width:0px;height:0px"></canvas><!-- //barChart turned invisible atm -->
+ <div id="threedcontainer" class="threedcontainer"></div>
+ </div>
+<script src="threedmodel.js"></script>
+
 <div id="connection_name">No device connected</div>
 
 
